@@ -25,7 +25,7 @@ public class BlackJack{
     int ran1 = rnd1.nextInt(52);
     int number = ran1 % 13;
     int mark_num = ran1 % 4;
-    String mark[] = {"ハート", "クラブ", "ダイヤ"," スペード"};
+    String mark[] = {"ハート", "クラブ", "ダイヤ","スペード"};
     System.out.println(mark[mark_num ]+":"+number);
   }
 }
