@@ -23,8 +23,8 @@ public class BlackJack{
   /**
   * dealメソッド
   * トランプ1セット（52枚)からランダムに1枚提示する
-  *  number 1-13 までが格納される
-  *  mark_num 0-3までが格納される
+  *  number には 1-13 までが格納される
+  *  mark_num には 0-3までが格納される
   */
   private static void deal(){
     Random rnd1 = new Random();
