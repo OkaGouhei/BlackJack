@@ -20,7 +20,7 @@ public class BlackJack{
     System.out.println("dealerのカード");
     deal(card,dealer_card);
     deal(card,dealer_card);
-    show_card(dealer_card);
+    dealer_show_card(dealer_card);
 
     // System.out.println("現在のカードは");
     // for(int i =0 ; i < player_card.size() ; i++){
@@ -29,16 +29,12 @@ public class BlackJack{
 
     int draw;
     do{
-
-      System.out.println("カードを引きますか？ yes:0/no:1");
+      System.out.print("カードを引きますか？ (yes 0/no 1)");
       Scanner scan = new Scanner(System.in);
       draw =scan.nextInt();
       if (draw == 0){
         System.out.println("カードを引きます");
-        current_card(deal(card,player_card));
-        // show_card(player_card);
-        System.out.println("プレイヤーの現在のポイントは"+point_card(player_card));
-
+        current_card(deal(card,player_card));//引いたカードを表示
       } else if(draw == 1){
         System.out.println("カードを引きません");
       }
@@ -50,17 +46,33 @@ public class BlackJack{
     //現在のカードを見せる
     System.out.println("playerのカードは");
     show_card(player_card);
+    if (point_card(player_card) > 21){
+      System.out.println("playerはバーストしました");
+    }else{
+      System.out.println("playerのポイントは"+point_card(player_card));
+    }
     // for(int i =0 ; i < player_card.size() ; i++){
     //     current_card(player_card.get(i));
     // }
-    if(point_card(player_card) > 21){
-      System.out.println("playerはバーストしました");
-    }else if (point_card(dealer_card)>21 ){
+    do{
+      deal(card,dealer_card);
+    }while(point_card(dealer_card) < 17);
+    System.out.println("dealerのカードは");
+    show_card(dealer_card);
+    if (point_card(dealer_card) > 21){
       System.out.println("dealerはバーストしました");
-    }else if (point_card(player_card))
-
-
-    System.out.println("現在のポイントは"+point_card(player_card));
+    }else{
+      System.out.println("playerのポイントは"+point_card(dealer_card));
+    }
+    if(point_card(player_card) > 21){
+      System.out.println("dealer の勝ちです");
+    }else if (point_card(dealer_card)>21 || point_card(player_card)> point_card(dealer_card)){
+      System.out.println("player の勝ちです");
+    }else if (point_card(player_card)<point_card(dealer_card)){
+      System.out.println("dealer の勝ちです");
+    }else{
+      System.out.println("引き分けです");
+    }
   }
   /**
   * deal メソッド
@@ -89,12 +101,18 @@ public class BlackJack{
     int mark_num = card_no % 4;
     String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
     System.out.println(mark[mark_num ]+":"+number);
-
   }
-
-
   private static void show_card(List<Integer> card){
     for(int i =0 ; i < card.size() ; i++){
+      int number = card.get(i) % 13 + 1;
+      int mark_num = card.get(i) % 4;
+      String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
+      System.out.println(mark[mark_num ]+":"+number);
+    }
+  }
+  private static void dealer_show_card(List<Integer> card){
+    System.out.println("Hole Card");
+    for(int i =1 ; i < card.size() ; i++){
       int number = card.get(i) % 13 + 1;
       int mark_num = card.get(i) % 4;
       String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
