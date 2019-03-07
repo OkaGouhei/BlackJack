@@ -51,9 +51,7 @@ public class BlackJack{
     }else{
       System.out.println("playerのポイントは"+point_card(player_card));
     }
-    // for(int i =0 ; i < player_card.size() ; i++){
-    //     current_card(player_card.get(i));
-    // }
+
     do{
       deal(card,dealer_card);
     }while(point_card(dealer_card) < 17);
@@ -102,6 +100,12 @@ public class BlackJack{
     String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
     System.out.println(mark[mark_num ]+":"+number);
   }
+  /**
+  * show_card メソッド
+  * player dealerそれぞれの持ちカードを表示する
+  *  number には 1-13 までが格納される
+  *  mark_num には 0-3までが格納される
+  */
   private static void show_card(List<Integer> card){
     for(int i =0 ; i < card.size() ; i++){
       int number = card.get(i) % 13 + 1;
@@ -110,6 +114,14 @@ public class BlackJack{
       System.out.println(mark[mark_num ]+":"+number);
     }
   }
+
+  /**
+  * dealer_show_card メソッド
+  * dealer の持ちカードを表示する
+  * ただし Hole Card は表示しない
+  *  number には 1-13 までが格納される
+  *  mark_num には 0-3までが格納される
+  */
   private static void dealer_show_card(List<Integer> card){
     System.out.println("Hole Card");
     for(int i =1 ; i < card.size() ; i++){
