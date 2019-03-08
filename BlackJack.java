@@ -5,18 +5,22 @@ import java.util.List;
 
 public class BlackJack{
   public static void main(String[] args) {
+    //1デッキのカードを用意する
     int card_size = 52;
     boolean[] card = new boolean[card_size];
     for(int i =0;i < card_size;i++){
       card[i] =true;
     }
+
+    //player のカードが入るListを用意する
     List<Integer> player_card = new ArrayList<Integer>();
-    List<Integer> dealer_card = new ArrayList<Integer>();
     System.out.println("playerのカード");
     deal(card,player_card);
     deal(card,player_card);
     show_card(player_card);
 
+    //dealer のカードが入るListを用意する
+    List<Integer> dealer_card = new ArrayList<Integer>();
     System.out.println("dealerのカード");
     deal(card,dealer_card);
     deal(card,dealer_card);
@@ -51,7 +55,7 @@ public class BlackJack{
     }else{
       System.out.println("playerのポイントは"+point_card(player_card));
     }
-
+    //dealer のカード 17以上になるまでカードを引く
     do{
       deal(card,dealer_card);
     }while(point_card(dealer_card) < 17);
@@ -62,6 +66,8 @@ public class BlackJack{
     }else{
       System.out.println("playerのポイントは"+point_card(dealer_card));
     }
+
+    //勝敗を決定する
     if(point_card(player_card) > 21){
       System.out.println("dealer の勝ちです");
     }else if (point_card(dealer_card)>21 || point_card(player_card)> point_card(dealer_card)){
