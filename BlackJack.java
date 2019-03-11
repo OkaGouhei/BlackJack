@@ -53,9 +53,9 @@ public class BlackJack{
       System.out.println("playerのポイントは"+point_card(player_card));
     }
     //dealer のカード 17以上になるまでカードを引く
-    do{
+    while(point_card(dealer_card) < 17){
       deal(card,dealer_card);
-    }while(point_card(dealer_card) < 17);
+    }
     System.out.println("dealerのカードは");
     show_card(dealer_card);
     if (point_card(dealer_card) > 21){
@@ -121,7 +121,7 @@ public class BlackJack{
   */
   private static void dealer_show_card(List<Integer> dealer_show_card){
     System.out.println("Hole Card");
-    for(int i =1; i < dealer_show_card.size() ; i++){
+    for(int i =1; i < dealer_show_card.size() ; i++){//i = 1 と
       card_no_mark(dealer_show_card.get(i));
     }
   }
