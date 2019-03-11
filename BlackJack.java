@@ -93,7 +93,7 @@ public class BlackJack{
     return ran1;
   }
   /**
-  * current_card メソッド
+  * card_no_mark メソッド
   * トランプのナンバー、マークを表示する
   *  number には 1-13 までが格納される
   *  mark_num には 0-3までが格納される
@@ -107,8 +107,6 @@ public class BlackJack{
   /**
   * show_card メソッド
   * player dealerそれぞれの持ちカードを表示する
-  *  number には 1-13 までが格納される
-  *  mark_num には 0-3までが格納される
   */
   private static void show_card(List<Integer> show_card){
     for(Integer i : show_card){//拡張 for文
@@ -120,8 +118,6 @@ public class BlackJack{
   * dealer_show_card メソッド
   * dealer の持ちカードを表示する
   * ただし Hole Card は表示しない
-  *  number には 1-13 までが格納される
-  *  mark_num には 0-3までが格納される
   */
   private static void dealer_show_card(List<Integer> dealer_show_card){
     System.out.println("Hole Card");
