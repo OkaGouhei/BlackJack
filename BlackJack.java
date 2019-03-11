@@ -32,11 +32,11 @@ public class BlackJack{
     // }
 
     int draw;
+    Scanner scan = new Scanner(System.in);
     do{
       System.out.print("カードを引きますか？ (yes 0/no 1)");
-      Scanner scan = new Scanner(System.in);
+      // Scanner scan = new Scanner(System.in);
       draw =scan.nextInt();
-      scan.close();//scanner は閉じる習慣をつける
       if (draw == 0){
         System.out.println("カードを引きます");
         current_card(deal(card,player_card));//引いたカードを表示
@@ -48,6 +48,7 @@ public class BlackJack{
       }
     }while(draw != 1 && point_card(player_card) <= 21);//1 を選択しない限り繰り返します
 
+    scan.close();//scanner は閉じる習慣をつける
     //現在のカードを見せる
     System.out.println("playerのカードは");
     show_card(player_card);
@@ -65,7 +66,7 @@ public class BlackJack{
     if (point_card(dealer_card) > 21){
       System.out.println("dealerはバーストしました");
     }else{
-      System.out.println("playerのポイントは"+point_card(dealer_card));
+      System.out.println("dealerのポイントは"+point_card(dealer_card));
     }
 
     //勝敗を決定する
@@ -79,6 +80,7 @@ public class BlackJack{
       System.out.println("引き分けです");
     }
   }
+
   /**
   * deal メソッド
   * トランプ1セット（52枚)からランダムに1枚提示する
