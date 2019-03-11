@@ -91,7 +91,7 @@ public class BlackJack{
     Random rnd1 = new Random();
     int ran1;
     do{
-      ran1 = rnd1.nextInt(52);
+      ran1 = rnd1.nextInt(52);//0~51までの数字がランダムにran1に格納される
     }while(card[ran1] != true);
     card[ran1]= false;
     player_card.add(ran1) ;
@@ -104,7 +104,7 @@ public class BlackJack{
   *  mark_num には 0-3までが格納される
   */
   private static void current_card(int card_no){
-    int number = card_no % 13 + 1;
+    int number = card_no % 13 +1;
     int mark_num = card_no % 4;
     String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
     System.out.println(mark[mark_num ]+":"+number);
@@ -115,8 +115,8 @@ public class BlackJack{
   *  number には 1-13 までが格納される
   *  mark_num には 0-3までが格納される
   */
-  private static void show_card(List<Integer> card){
-    for(Integer i : card ){//拡張 for文
+  private static void show_card(List<Integer> show_card){
+    for(Integer i : show_card){//拡張 for文
       int number = i % 13 + 1;
       int mark_num = i % 4;
       String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
@@ -131,11 +131,11 @@ public class BlackJack{
   *  number には 1-13 までが格納される
   *  mark_num には 0-3までが格納される
   */
-  private static void dealer_show_card(List<Integer> card){
+  private static void dealer_show_card(List<Integer> dealer_show_card){
     System.out.println("Hole Card");
-    for(int i =1 ; i < card.size() ; i++){
-      int number = card.get(i) % 13 + 1;
-      int mark_num = card.get(i) % 4;
+    for(Integer i : dealer_show_card){
+      int number = i % 13 + 1;
+      int mark_num = i % 4;
       String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
       System.out.println(mark[mark_num ]+":"+number);
     }
@@ -146,10 +146,10 @@ public class BlackJack{
   * とりあえずAは1とカウント(後で場合分けして修正)
   * 返り値はポイント数
   */
-  private static int point_card(List<Integer> card){
+  private static int point_card(List<Integer> point_card){
     int point = 0;
-    for(int i =0 ; i < card.size() ; i++){
-      int mark_num =  card.get(i) % 13 + 1;
+    for(Integer i : point_card){
+      int mark_num =  i % 13 + 1;
       if(mark_num < 10){
         point += mark_num;
       }else{
