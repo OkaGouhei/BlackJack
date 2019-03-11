@@ -26,11 +26,6 @@ public class BlackJack{
     deal(card,dealer_card);
     dealer_show_card(dealer_card);
 
-    // System.out.println("現在のカードは");
-    // for(int i =0 ; i < player_card.size() ; i++){
-    //     current_card(player_card.get(i));
-    // }
-
     int draw;
     Scanner scan = new Scanner(System.in);
     do{
@@ -39,7 +34,7 @@ public class BlackJack{
       draw =scan.nextInt();
       if (draw == 0){
         System.out.println("カードを引きます");
-        current_card(deal(card,player_card));//引いたカードを表示
+        card_no_mark(deal(card,player_card));//引いたカードを表示
       } else if(draw == 1){
         System.out.println("カードを引きません");
       }
@@ -84,8 +79,8 @@ public class BlackJack{
   /**
   * deal メソッド
   * トランプ1セット（52枚)からランダムに1枚提示する
-  *  number には 1-13 までが格納される
-  *  mark_num には 0-3までが格納される
+  *  ran1 には 0-51 までが代入される
+  *  player_card には 0-51までが格納される
   */
   private static int deal(boolean[] card,List<Integer> player_card){
     Random rnd1 = new Random();
@@ -103,9 +98,9 @@ public class BlackJack{
   *  number には 1-13 までが格納される
   *  mark_num には 0-3までが格納される
   */
-  private static void current_card(int card_no){
-    int number = card_no % 13 +1;
-    int mark_num = card_no % 4;
+  private static void card_no_mark(int card_no_mark){
+    int number = card_no_mark % 13 +1;
+    int mark_num = card_no_mark % 4;
     String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
     System.out.println(mark[mark_num ]+":"+number);
   }
@@ -117,10 +112,7 @@ public class BlackJack{
   */
   private static void show_card(List<Integer> show_card){
     for(Integer i : show_card){//拡張 for文
-      int number = i % 13 + 1;
-      int mark_num = i % 4;
-      String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
-      System.out.println(mark[mark_num ]+":"+number);
+      card_no_mark(i);
     }
   }
 
@@ -134,10 +126,7 @@ public class BlackJack{
   private static void dealer_show_card(List<Integer> dealer_show_card){
     System.out.println("Hole Card");
     for(Integer i : dealer_show_card){
-      int number = i % 13 + 1;
-      int mark_num = i % 4;
-      String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
-      System.out.println(mark[mark_num ]+":"+number);
+      card_no_mark(i);
     }
   }
   /**
