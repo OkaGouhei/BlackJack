@@ -109,8 +109,8 @@ public class BlackJack{
   * player dealerそれぞれの持ちカードを表示する
   */
   private static void show_card(List<Integer> show_card){
-    for(Integer i : show_card){//拡張 for文
-      card_no_mark(i);
+    for(int i =0; i < show_card.size() ; i++){
+      card_no_mark(show_card.get(i));
     }
   }
 
@@ -121,8 +121,8 @@ public class BlackJack{
   */
   private static void dealer_show_card(List<Integer> dealer_show_card){
     System.out.println("Hole Card");
-    for(Integer i : dealer_show_card){
-      card_no_mark(i);
+    for(int i =1; i < dealer_show_card.size() ; i++){
+      card_no_mark(dealer_show_card.get(i));
     }
   }
   /**
