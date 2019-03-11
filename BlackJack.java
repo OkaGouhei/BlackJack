@@ -36,6 +36,7 @@ public class BlackJack{
       System.out.print("カードを引きますか？ (yes 0/no 1)");
       Scanner scan = new Scanner(System.in);
       draw =scan.nextInt();
+      scan.close();//scanner は閉じる習慣をつける
       if (draw == 0){
         System.out.println("カードを引きます");
         current_card(deal(card,player_card));//引いたカードを表示
