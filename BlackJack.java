@@ -114,9 +114,9 @@ public class BlackJack{
   *  mark_num には 0-3までが格納される
   */
   private static void show_card(List<Integer> card){
-    for(int i =0 ; i < card.size() ; i++){
-      int number = card.get(i) % 13 + 1;
-      int mark_num = card.get(i) % 4;
+    for(Integer i : card ){//拡張 for文
+      int number = i % 13 + 1;
+      int mark_num = i % 4;
       String mark[] = {"❤️ ", "♣️ ", "♦️ ","♠️ "};
       System.out.println(mark[mark_num ]+":"+number);
     }
